@@ -21,15 +21,16 @@ const DetailsCardContainer = styled.div`
 const Heading = styled.h1`
   flex-grow: 1;
   text-align: center;
-  font-family: "roboto";
+  font-family: "Arial";
 `;
 const LabelName = styled.p`
-  font-weight: bold;
+  font-weight: 500;
   font-size: 15px;
   margin: 0px;
 `;
 const Content = styled.span`
   margin-bottom: 10px;
+  font-family: "Arial";
 `;
 const Details = styled.div`
   display: flex;

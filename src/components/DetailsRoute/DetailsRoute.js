@@ -36,7 +36,7 @@ const DetailsRoute = (props) => {
         </Details>
       </DetailsCardContainer>
       <ButtonContainer>
-        <Button>pay</Button>
+        <Button>Pay</Button>
 
         <Button>Edit</Button>
       </ButtonContainer>
