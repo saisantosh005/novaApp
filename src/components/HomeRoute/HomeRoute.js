@@ -1,5 +1,11 @@
+import AddBill from "./AddBill/AddBill";
 import BillCard from "./BillCard/BillCard";
-import { Heading, MainDiv } from "./styledComponent";
+import {
+  BillListContainer,
+  Heading,
+  MainContainer,
+  MainDiv
+} from "./styledComponent";
 
 // const billsList = [
 //   {
@@ -52,12 +58,17 @@ const billsList = [
 
 const HomeRoute = () => {
   return (
-    <MainDiv>
-      <Heading>Your Bills</Heading>
-      {billsList.map((item) => (
-        <BillCard details={item} />
-      ))}
-    </MainDiv>
+    <MainContainer>
+      <MainDiv>
+        <Heading>Your Bills</Heading>
+        <BillListContainer>
+          {billsList.map((item) => (
+            <BillCard details={item} />
+          ))}
+        </BillListContainer>
+      </MainDiv>
+      <AddBill />
+    </MainContainer>
   );
 };
 export default HomeRoute;
