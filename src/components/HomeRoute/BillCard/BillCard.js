@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import {
   BillCardMainContainer,
   Heading,
@@ -12,6 +13,7 @@ const BillCard = (props) => {
       <Heading>{category}</Heading>
       <ReferenceNumber>Reference Number: {id}</ReferenceNumber>
       <Amount>Rs {amount}</Amount>
+      <Link to={`/details`}>View</Link>
     </BillCardMainContainer>
   );
 };

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import {
   DetailsMainContainer,
   DetailsCardContainer,
@@ -36,7 +37,9 @@ const DetailsRoute = (props) => {
         </Details>
       </DetailsCardContainer>
       <ButtonContainer>
-        <Button>Pay</Button>
+        <Button>
+          <Link to="payment">Pay</Link>
+        </Button>
 
         <Button>Edit</Button>
       </ButtonContainer>
