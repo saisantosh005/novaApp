@@ -3,8 +3,10 @@ import {
   BillCardMainContainer,
   Heading,
   ReferenceNumber,
-  Amount
+  Amount,
+  LinkAndIconContainer
 } from "./styledComponents";
+import { FaTrash } from "react-icons/fa";
 
 const BillCard = (props) => {
   const { category, id, amount, date, status } = props.details;
@@ -17,8 +19,11 @@ const BillCard = (props) => {
       <Heading>{category}</Heading>
       <ReferenceNumber>Reference Number: {id}</ReferenceNumber>
       <Amount>Rs {amount}</Amount>
-      <Link to={`/details/${id}`}>View</Link>
-      <button onClick={onClickDelete}>Delete</button>
+      <LinkAndIconContainer>
+        <Link to={`/details/${id}`}>View</Link>
+        <FaTrash onClick={onClickDelete} />
+      </LinkAndIconContainer>
+      {/* <button >Delete</button> */}
     </BillCardMainContainer>
   );
 };

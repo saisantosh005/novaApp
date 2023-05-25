@@ -22,6 +22,18 @@ const Amount = styled.p`
   font-size: 25px;
   margin: 0px;
 `;
+const LinkAndIconContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px;
+`;
 const ReferenceNumber = styled.p``;
 
-export { BillCardMainContainer, Heading, ReferenceNumber, Amount };
+export {
+  BillCardMainContainer,
+  Heading,
+  ReferenceNumber,
+  LinkAndIconContainer,
+  Amount
+};

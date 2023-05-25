@@ -50,12 +50,13 @@ const DetailsRoute = (props) => {
           </Content>
         </Details>
         <ButtonContainer>
-          <Link to="/payment">
+          <Link to={`/payment/${id}`}>
             <Button>Pay</Button>
           </Link>
 
           <Button>Edit</Button>
         </ButtonContainer>
+        <Link to={`/`}>back</Link>
       </DetailsCardContainer>
     </DetailsMainContainer>
   );

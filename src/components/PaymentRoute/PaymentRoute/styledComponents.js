@@ -3,6 +3,7 @@ import styled from "styled-components";
 const MainContainer = styled.div`
   background: #f0f0f0;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
@@ -10,9 +11,12 @@ const MainContainer = styled.div`
 const PaymentContainer = styled.div`
   background: white;
   border-radius: 10px;
-  padding: 10px;
+  padding: 20px;
   min-width: 300px;
   min-height: 300px;
+`;
+const Heading = styled.h1`
+  text-align: center;
 `;
 const BillDetailSection = styled.div`
   border-bottom: 2px dashed grey;
@@ -61,5 +65,6 @@ export {
   InputContainer,
   Label,
   Input,
-  Button
+  Button,
+  Heading
 };
