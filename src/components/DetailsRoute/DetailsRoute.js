@@ -49,14 +49,14 @@ const DetailsRoute = (props) => {
             Amout:<SpecialText>{frequency}</SpecialText>
           </Content>
         </Details>
-      </DetailsCardContainer>
-      <ButtonContainer>
-        <Link to="/payment">
-          <Button>Pay</Button>
-        </Link>
+        <ButtonContainer>
+          <Link to="/payment">
+            <Button>Pay</Button>
+          </Link>
 
-        <Button>Edit</Button>
-      </ButtonContainer>
+          <Button>Edit</Button>
+        </ButtonContainer>
+      </DetailsCardContainer>
     </DetailsMainContainer>
   );
 };

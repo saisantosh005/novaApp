@@ -16,6 +16,7 @@ const PaymentRoute = () => {
   return (
     <MainContainer>
       <PaymentContainer>
+        <h1>Payment section</h1>
         <BillDetailSection>
           <TextContainer>
             <p>Paying to</p>

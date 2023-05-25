@@ -37,14 +37,20 @@ const Details = styled.div`
   display: flex;
   flex-direction: column;
 `;
-const ButtonContainer = styled.div``;
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: end;
+  margin-top: 20px;
+  padding-right: 10px;
+`;
 const Button = styled.button`
   font-size: 15px;
   border-radius: 10px;
   background: #3333ff;
   color: white;
   border: none;
-  padding: 8px 12px;
+  padding: 8px 30px;
+  margin-left: 20px;
 `;
 const SpecialText = styled.p`
   display: inline;

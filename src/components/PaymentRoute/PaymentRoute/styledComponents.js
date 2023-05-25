@@ -16,6 +16,7 @@ const PaymentContainer = styled.div`
 `;
 const BillDetailSection = styled.div`
   border-bottom: 2px dashed grey;
+  margin-bottom: 10px;
 `;
 const TextContainer = styled.div`
   display: flex;
