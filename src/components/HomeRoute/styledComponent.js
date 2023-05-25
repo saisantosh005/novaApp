@@ -5,6 +5,7 @@ const MainContainer = styled.div`
   display: flex;
   justify-content: space-between;
   min-height: 100vh;
+  padding: 10px;
 `;
 const MainDiv = styled.div`
   background: #f0f0f0;

@@ -50,7 +50,7 @@ const AddBill = (props) => {
   };
   return (
     <MainContainer onSubmit={onSubmitForm}>
-      <Heading>New Biil</Heading>
+      <Heading>New Bill</Heading>
       <InputContainer>
         <Label>Category</Label>
         <Select onChange={onChangeCategory}>

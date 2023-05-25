@@ -7,33 +7,10 @@ import {
   MainContainer,
   MainDiv
 } from "./styledComponent";
-
-// const billsList = [
-//   {
-//     category: "electricity",
-//     billList: [
-//       {
-//         name: "electricity",
-//         amount: 200,
-//         frequency: 3,
-//         phoneNumber: 972374987,
-//         email: ""
-//       }
-//     ]
-//   },
-//   {
-//     category: "mobile Recharge",
-//     billList: []
-//   },
-//   {
-//     category: "subscription",
-//     billList: []
-//   }
-// ];
 const billsList = [
   {
     id: 123487,
-    category: "electricity",
+    category: "Electricity",
     amount: 200,
     frequency: 3,
     phoneNumber: 972374987,
@@ -41,7 +18,7 @@ const billsList = [
   },
   {
     id: 2345987,
-    category: "mobile Recharge",
+    category: "Mobile recharge",
     amount: 200,
     frequency: 3,
     phoneNumber: 972374987,
@@ -49,7 +26,7 @@ const billsList = [
   },
   {
     id: 3234987,
-    category: "subscription",
+    category: "Subscription",
     amount: 200,
     frequency: 3,
     phoneNumber: 972374987,
@@ -63,8 +40,12 @@ const HomeRoute = () => {
   const insertNewBill = (value) => {
     setBillList([...billListValues, value]);
   };
+  const onDeleteBill = (id) => {
+    const newBillList = billListValues.filter((bill) => bill.id !== id);
+    setBillList(newBillList);
+  };
   useEffect(() => {
-    console.log(billListValues);
+    localStorage.setItem("billList", JSON.stringify(billListValues));
   });
 
   return (
@@ -72,9 +53,13 @@ const HomeRoute = () => {
       <MainDiv>
         <Heading>Your Bills</Heading>
         <BillListContainer>
-          {billListValues.map((item) => (
-            <BillCard details={item} />
-          ))}
+          {billListValues.length !== 0 ? (
+            billListValues.map((item) => (
+              <BillCard details={item} onDeleteBill={onDeleteBill} />
+            ))
+          ) : (
+            <p>No active bills</p>
+          )}
         </BillListContainer>
       </MainDiv>
       <AddBill addbill={insertNewBill} />

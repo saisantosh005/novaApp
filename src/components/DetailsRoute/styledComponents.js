@@ -31,6 +31,7 @@ const LabelName = styled.p`
 const Content = styled.span`
   margin-bottom: 10px;
   font-family: "Arial";
+  font-size: 18px;
 `;
 const Details = styled.div`
   display: flex;
@@ -45,6 +46,12 @@ const Button = styled.button`
   border: none;
   padding: 8px 12px;
 `;
+const SpecialText = styled.p`
+  display: inline;
+  font-size: 18px;
+  margin-left: 10px;
+  font-weight: bold;
+`;
 export {
   DetailsMainContainer,
   DetailsCardContainer,
@@ -53,5 +60,6 @@ export {
   Content,
   Details,
   ButtonContainer,
+  SpecialText,
   Button
 };

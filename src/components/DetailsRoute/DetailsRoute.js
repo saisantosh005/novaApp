@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   DetailsMainContainer,
@@ -7,39 +8,52 @@ import {
   Content,
   Details,
   ButtonContainer,
-  Button
+  Button,
+  SpecialText
 } from "./styledComponents";
 
 const DetailsRoute = (props) => {
   const { match } = props;
   const { params } = match;
   const { id } = params;
+  const storedDetails = JSON.parse(localStorage.getItem("billList"));
+  const details = storedDetails.filter((detail) => detail.id == id);
+  const { category, amount, email, frequency, phoneNumber } = details[0];
+  useEffect(() => {
+    console.log(details, category, amount, email, "asdf");
+  });
   return (
     <DetailsMainContainer>
       <DetailsCardContainer>
         <Heading>Bill Details</Heading>
         <Details>
           <Content>
-            <LabelName>Name:</LabelName>
+            Category:<SpecialText>{category}</SpecialText>
           </Content>
           <Content>
-            <LabelName>Category:</LabelName>
+            Reference Number:<SpecialText>{id}</SpecialText>
           </Content>
           <Content>
-            <LabelName>Date:</LabelName>
+            Frequency:
+            <SpecialText>{frequency}</SpecialText>
           </Content>
           <Content>
-            <LabelName>Frequency:</LabelName>
+            Phone number:
+            <SpecialText>{phoneNumber}</SpecialText>
           </Content>
           <Content>
-            <LabelName>Amout:</LabelName>
+            Email:
+            <SpecialText>{email}</SpecialText>
+          </Content>
+          <Content>
+            Amout:<SpecialText>{frequency}</SpecialText>
           </Content>
         </Details>
       </DetailsCardContainer>
       <ButtonContainer>
-        <Button>
-          <Link to="payment">Pay</Link>
-        </Button>
+        <Link to="/payment">
+          <Button>Pay</Button>
+        </Link>
 
         <Button>Edit</Button>
       </ButtonContainer>
