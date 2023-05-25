@@ -10,6 +10,7 @@ import {
   Input,
   TextContainer
 } from "./styledComponents";
+import { Link } from "react-router-dom";
 
 const PaymentRoute = () => {
   return (
@@ -47,6 +48,7 @@ const PaymentRoute = () => {
             <Input type="text" />
           </InputContainer>
           <Button>Pay</Button>
+          <Link to="/">back</Link>
         </PaymentDetailsSection>
       </PaymentContainer>
     </MainContainer>

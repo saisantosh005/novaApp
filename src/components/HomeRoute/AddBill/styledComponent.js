@@ -1,5 +1,5 @@
 import styled from "styled-components";
-const MainContainer = styled.div`
+const MainContainer = styled.form`
   background: white;
   max-height: 500px;
   border-radius: 10px;

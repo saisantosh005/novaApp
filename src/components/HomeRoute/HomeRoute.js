@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import AddBill from "./AddBill/AddBill";
 import BillCard from "./BillCard/BillCard";
 import {
@@ -57,17 +58,26 @@ const billsList = [
 ];
 
 const HomeRoute = () => {
+  const [billListValues, setBillList] = useState(billsList);
+
+  const insertNewBill = (value) => {
+    setBillList([...billListValues, value]);
+  };
+  useEffect(() => {
+    console.log(billListValues);
+  });
+
   return (
     <MainContainer>
       <MainDiv>
         <Heading>Your Bills</Heading>
         <BillListContainer>
-          {billsList.map((item) => (
+          {billListValues.map((item) => (
             <BillCard details={item} />
           ))}
         </BillListContainer>
       </MainDiv>
-      <AddBill />
+      <AddBill addbill={insertNewBill} />
     </MainContainer>
   );
 };
