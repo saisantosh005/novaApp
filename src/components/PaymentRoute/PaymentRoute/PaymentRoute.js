@@ -9,19 +9,28 @@ import {
   Label,
   Input,
   TextContainer,
-  Heading
+  Heading,
+  ErrorText
 } from "./styledComponents";
 import { Link, withRouter } from "react-router-dom";
 import { useState } from "react";
 
 const PaymentRoute = (props) => {
   const [accountDetails, setAccount] = useState({ accountNumber: "", cvv: "" });
+  const [showErrorMsg, setErrMsgStatus] = useState(false);
   const { match } = props;
   const { params } = match;
   const { id } = params;
   const storedDetails = JSON.parse(localStorage.getItem("billList"));
   const details = storedDetails.filter((detail) => detail.id == id);
-  const { category, amount, email, frequency, phoneNumber } = details[0];
+  const {
+    category,
+    referenceNumber,
+    amount,
+    email,
+    frequency,
+    phoneNumber
+  } = details[0];
 
   const onChangeAccountNumber = (e) => {
     setAccount({ ...accountDetails, accountNumber: e.target.value });
@@ -31,8 +40,18 @@ const PaymentRoute = (props) => {
   };
   const onPaymentDone = () => {
     const { history } = props;
-    alert("You payment is success");
-    history.replace(`/details/${id}`);
+    const { accountNumber, cvv } = accountDetails;
+    if (accountNumber !== "" || cvv !== "") {
+      setErrMsgStatus(!showErrorMsg);
+      alert("You payment is success");
+      history.replace(`/details/${id}`);
+    } else {
+      setErrMsgStatus(true);
+    }
+  };
+  const onGoBack = () => {
+    const { history } = props;
+    history.goBack();
   };
   return (
     <MainContainer>
@@ -49,7 +68,7 @@ const PaymentRoute = (props) => {
           </TextContainer>
           <TextContainer>
             <p>Reference Number</p>
-            <SpecialText>{id}</SpecialText>
+            <SpecialText>{referenceNumber}</SpecialText>
           </TextContainer>
           <TextContainer>
             <p>Amount</p>
@@ -78,9 +97,12 @@ const PaymentRoute = (props) => {
             />
           </InputContainer>
           <Button onClick={onPaymentDone}>Pay</Button>
-          <Link to={`/details/${id}`}>back</Link>
+          {showErrorMsg && (
+            <ErrorText>* Account details are Mandatory</ErrorText>
+          )}
         </PaymentDetailsSection>
       </PaymentContainer>
+      <button onClick={onGoBack}>back</button>
     </MainContainer>
   );
 };

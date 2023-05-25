@@ -55,6 +55,10 @@ const Button = styled.button`
   background: blue;
   color: white;
 `;
+const ErrorText = styled.p`
+  color: red;
+  font-size: 15px;
+`;
 export {
   MainContainer,
   PaymentContainer,
@@ -66,5 +70,6 @@ export {
   Label,
   Input,
   Button,
-  Heading
+  Heading,
+  ErrorText
 };

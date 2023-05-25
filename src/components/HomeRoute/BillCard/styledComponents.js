@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const BillCardMainContainer = styled.div`
+const BillCardMainContainer = styled.li`
   display: flex;
   flex-direction: column;
   min-width: 250px;
@@ -10,6 +10,7 @@ const BillCardMainContainer = styled.div`
   border-radius: 10px;
   margin: 10px;
   padding: 10px;
+  list-style-type: none;
 `;
 
 const Heading = styled.h1`

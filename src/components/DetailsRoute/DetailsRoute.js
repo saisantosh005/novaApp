@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import {
   DetailsMainContainer,
   DetailsCardContainer,
@@ -18,9 +18,20 @@ const DetailsRoute = (props) => {
   const { id } = params;
   const storedDetails = JSON.parse(localStorage.getItem("billList"));
   const details = storedDetails.filter((detail) => detail.id == id);
-  const { category, amount, email, frequency, phoneNumber } = details[0];
+  const {
+    category,
+    referenceNumber,
+    amount,
+    email,
+    frequency,
+    phoneNumber
+  } = details[0];
+  const onGoback = () => {
+    const { history } = props;
+    history.goBack();
+  };
   useEffect(() => {
-    console.log(details, category, amount, email, "asdf");
+    // console.log(details, category, amount, email, "asdf");
   });
   return (
     <DetailsMainContainer>
@@ -31,7 +42,7 @@ const DetailsRoute = (props) => {
             Category:<SpecialText>{category}</SpecialText>
           </Content>
           <Content>
-            Reference Number:<SpecialText>{id}</SpecialText>
+            Reference Number:<SpecialText>{referenceNumber}</SpecialText>
           </Content>
           <Content>
             Frequency:
@@ -46,7 +57,7 @@ const DetailsRoute = (props) => {
             <SpecialText>{email}</SpecialText>
           </Content>
           <Content>
-            Amout:<SpecialText>{frequency}</SpecialText>
+            Amout:<SpecialText>{amount}</SpecialText>
           </Content>
         </Details>
         <ButtonContainer>
@@ -56,9 +67,9 @@ const DetailsRoute = (props) => {
 
           <Button>Edit</Button>
         </ButtonContainer>
-        <Link to={`/`}>back</Link>
+        <button onClick={onGoback}>back</button>
       </DetailsCardContainer>
     </DetailsMainContainer>
   );
 };
-export default DetailsRoute;
+export default withRouter(DetailsRoute);

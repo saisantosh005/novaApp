@@ -9,7 +9,7 @@ import {
 import { FaTrash } from "react-icons/fa";
 
 const BillCard = (props) => {
-  const { category, id, amount, date, status } = props.details;
+  const { category, id, referenceNumber, amount, date, status } = props.details;
 
   const onClickDelete = () => {
     props.onDeleteBill(id);
@@ -17,7 +17,7 @@ const BillCard = (props) => {
   return (
     <BillCardMainContainer>
       <Heading>{category}</Heading>
-      <ReferenceNumber>Reference Number: {id}</ReferenceNumber>
+      <ReferenceNumber>Reference Number: {referenceNumber}</ReferenceNumber>
       <Amount>Rs {amount}</Amount>
       <LinkAndIconContainer>
         <Link to={`/details/${id}`}>View</Link>

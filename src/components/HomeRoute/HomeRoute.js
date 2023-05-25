@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import AddBill from "./AddBill/AddBill";
 import BillCard from "./BillCard/BillCard";
+import { v4 as uuidv4 } from "uuid";
+
 import {
   BillListContainer,
   Heading,
@@ -10,6 +12,7 @@ import {
 const billsList = [
   {
     id: 123487,
+    referenceNumber: 143273,
     category: "Electricity",
     amount: 200,
     frequency: 3,
@@ -18,6 +21,7 @@ const billsList = [
   },
   {
     id: 2345987,
+    referenceNumber: 143273,
     category: "Mobile recharge",
     amount: 200,
     frequency: 3,
@@ -26,6 +30,7 @@ const billsList = [
   },
   {
     id: 3234987,
+    referenceNumber: 143273,
     category: "Subscription",
     amount: 200,
     frequency: 3,
@@ -35,7 +40,10 @@ const billsList = [
 ];
 
 const HomeRoute = () => {
-  const [billListValues, setBillList] = useState(billsList);
+  const localBillList = JSON.parse(localStorage.getItem("billList"));
+  const [billListValues, setBillList] = useState(
+    localBillList ? localBillList : billsList
+  );
 
   const insertNewBill = (value) => {
     setBillList([...billListValues, value]);
@@ -55,7 +63,11 @@ const HomeRoute = () => {
         <BillListContainer>
           {billListValues.length !== 0 ? (
             billListValues.map((item) => (
-              <BillCard details={item} onDeleteBill={onDeleteBill} />
+              <BillCard
+                key={uuidv4()}
+                details={item}
+                onDeleteBill={onDeleteBill}
+              />
             ))
           ) : (
             <p>No active bills</p>

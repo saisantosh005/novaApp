@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { v4 as uuidv4 } from "uuid";
 import {
   Label,
   Input,
@@ -7,26 +8,29 @@ import {
   MainContainer,
   Heading,
   Button,
-  ButtonContainer
+  ButtonContainer,
+  ErrorText
 } from "./styledComponent";
 const category = ["Electricity", "Recharge", "credit Card"];
 const frequency = [1, 2, 3, 4, 5];
 const initialState = {
   id: "",
-  category: "",
+  referenceNumber: "",
+  category: category[0],
   amount: "",
   frequency: 0,
   phoneNumber: "",
   email: ""
 };
 const AddBill = (props) => {
-  const [details, setdetails] = useState(initialState);
+  const [details, setdetails] = useState({ ...initialState, id: uuidv4() });
+  const [showErrorMsg, setErrMsgStatus] = useState(false);
   const onChangeCategory = (event) => {
     setdetails({ ...details, category: event.target.value });
   };
 
   const onChangeReferenceNumber = (event) => {
-    setdetails({ ...details, id: event.target.value });
+    setdetails({ ...details, referenceNumber: event.target.value });
   };
 
   const onChangePhoneNumber = (event) => {
@@ -45,31 +49,39 @@ const AddBill = (props) => {
   useEffect(() => {});
   const onSubmitForm = (e) => {
     e.preventDefault();
-    props.addbill(details);
-    setdetails(initialState);
+    const { category, referenceNumber, amount, phoneNumber } = details;
+    if (referenceNumber !== "" || amount !== "" || phoneNumber !== "") {
+      setErrMsgStatus(false);
+      props.addbill({ ...details, id: uuidv4() });
+      setdetails(initialState);
+    } else {
+      setErrMsgStatus(true);
+    }
   };
   return (
     <MainContainer onSubmit={onSubmitForm}>
       <Heading>New Bill</Heading>
       <InputContainer>
-        <Label>Category</Label>
+        <Label>Category *</Label>
         <Select onChange={onChangeCategory}>
           {category.map((item) => (
-            <option value={item}>{item}</option>
+            <option key={uuidv4()} value={item}>
+              {item}
+            </option>
           ))}
         </Select>
       </InputContainer>
       <InputContainer>
-        <Label>Reference Number</Label>
+        <Label>Reference Number *</Label>
         <Input
           placeholder="ReferenceNumber"
           type="number"
-          value={details.id}
+          value={details.referenceNumber}
           onChange={onChangeReferenceNumber}
         />
       </InputContainer>
       <InputContainer>
-        <Label>phone Number</Label>
+        <Label>phone Number *</Label>
         <Input
           placeholder="PhoneNumber"
           type="number"
@@ -78,7 +90,7 @@ const AddBill = (props) => {
         />
       </InputContainer>
       <InputContainer>
-        <Label>Amount</Label>
+        <Label>Amount *</Label>
         <Input
           placeholder="Amount"
           type="text"
@@ -99,13 +111,16 @@ const AddBill = (props) => {
         <Label>Frequency</Label>
         <Select onChange={onChangeFrequency}>
           {frequency.map((item) => (
-            <option value={item}>{item}</option>
+            <option key={uuidv4()} value={item}>
+              {item}
+            </option>
           ))}
         </Select>
       </InputContainer>
 
       <ButtonContainer>
         <Button>Add Bill</Button>
+        {showErrorMsg && <ErrorText>* Please fill Mandatory fields</ErrorText>}
       </ButtonContainer>
     </MainContainer>
   );

@@ -33,6 +33,7 @@ const Input = styled.input`
 
 const ButtonContainer = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   max-width: 500px;
 `;
@@ -45,6 +46,10 @@ const Button = styled.button`
   border: none;
   padding: 15px 12px;
 `;
+const ErrorText = styled.p`
+  color: red;
+  font-size: 15px;
+`;
 export {
   MainContainer,
   Heading,
@@ -53,5 +58,6 @@ export {
   Label,
   Input,
   ButtonContainer,
-  Button
+  Button,
+  ErrorText
 };

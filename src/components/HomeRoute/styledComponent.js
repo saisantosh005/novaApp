@@ -13,9 +13,12 @@ const MainDiv = styled.div`
   flex-direction: column;
   flex-wrap: wrap;
 `;
-const BillListContainer = styled.div`
+const BillListContainer = styled.ul`
+  list-style-type: none;
   display: flex;
   flex-wrap: wrap;
+  margin: 0px;
+  padding: 0px;
 `;
 const Heading = styled.h1`
   font-size: 20px;
