@@ -1,11 +1,11 @@
 import {
   ErrorText,
-  Form,
+  FormComponent,
   FormContainer,
   InputContainer
 } from "./styledComponents";
 import * as Yup from "yup";
-import { useFormik } from "formik";
+import { Field, useFormik, Formik, ErrorMessage } from "formik";
 const onSubmit = (values) => {
   console.log(values, "onsubmit");
 };
@@ -38,59 +38,33 @@ const validationSchema = Yup.object({
 });
 
 const FormikPra = () => {
-  const formik = useFormik({
-    initialValues,
-    onSubmit,
-    validationSchema
-  });
-  console.log(formik.touched);
   return (
-    <FormContainer>
-      <Form onSubmit={formik.handleSubmit}>
-        <InputContainer>
-          <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            onChange={formik.handleChange}
-            value={formik.values.name}
-            onBlur={formik.handleBlur}
-          />
-          {formik.touched.name && formik.errors.name ? (
-            <ErrorText>{formik.errors.name}</ErrorText>
-          ) : null}
-        </InputContainer>
-        <InputContainer>
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            onChange={formik.handleChange}
-            value={formik.values.email}
-            onBlur={formik.handleBlur}
-          />
-          {formik.touched.email && formik.errors.email && (
-            <ErrorText>{formik.errors.email}</ErrorText>
-          )}
-        </InputContainer>
-        <InputContainer>
-          <label htmlFor="channel">Channel</label>
-          <input
-            type="text"
-            name="channel"
-            onChange={formik.handleChange}
-            value={formik.values.channel}
-            onBlur={formik.handleBlur}
-          />
-          {formik.touched.channle && formik.errors.channel && (
-            <ErrorText>{formik.errors.channel}</ErrorText>
-          )}
-        </InputContainer>
-        <button type="submit">Submit</button>
-      </Form>
-    </FormContainer>
+    <Formik
+      initialValues={initialValues}
+      onSubmit={onSubmit}
+      validationSchema={validationSchema}
+    >
+      <FormContainer>
+        <FormComponent>
+          <InputContainer>
+            <label htmlFor="name">Name</label>
+            <Field type="text" id="name" name="name" />
+            <ErrorMessage name="name" />
+          </InputContainer>
+          <InputContainer>
+            <label htmlFor="email">Email</label>
+            <Field type="email" id="email" name="email" />{" "}
+            <ErrorMessage name="email" />
+          </InputContainer>
+          <InputContainer>
+            <label htmlFor="channel">Channel</label>
+            <Field type="text" name="channel" id="channel" />
+            <ErrorMessage name="channel" />
+          </InputContainer>
+          <button type="submit">Submit</button>
+        </FormComponent>
+      </FormContainer>
+    </Formik>
   );
 };
 

@@ -1,11 +1,12 @@
 import styled from "styled-components";
 
+import { Form } from "formik";
 const FormContainer = styled.div`
   display: flex;
   justify-content: center;
   min-height: 100vh;
 `;
-const Form = styled.form`
+const FormComponent = styled(Form)`
   display: flex;
   flex-direction: column;
 `;
@@ -14,4 +15,4 @@ const ErrorText = styled.p`
   color: red;
 `;
 
-export { FormContainer, Form, InputContainer, ErrorText };
+export { FormContainer, FormComponent, InputContainer, ErrorText };

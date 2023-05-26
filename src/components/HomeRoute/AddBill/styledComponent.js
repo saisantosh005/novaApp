@@ -12,7 +12,7 @@ const InputContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 500px;
+  /* max-width: 500px; */
 `;
 const Select = styled.select`
   padding: 10px;
@@ -22,12 +22,20 @@ const Select = styled.select`
 `;
 const Label = styled.label`
   font-size: 20px;
+  @media (max-width: 500px) {
+    font-size: 12px;
+  }
 `;
 const Input = styled.input`
   padding: 10px;
   border-radius: 10px;
   margin: 5px;
   font-size: 20px;
+  border: 1px solid grey;
+  @media (max-width: 500px) {
+    font-size: 12px;
+    padding: 5px;
+  }
   /* flex-grow: 1; */
 `;
 
