@@ -1,9 +1,9 @@
 import styled from "styled-components";
 const MainContainer = styled.div`
-  background: #f0f0f0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background: #f0f0f0;
   min-height: 100vh;
   padding: 10px;
   @media screen and (min-width: 600px) and (max-width: 800px) {
@@ -11,24 +11,24 @@ const MainContainer = styled.div`
   }
 `;
 const MainDiv = styled.div`
-  background: #f0f0f0;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  background: #f0f0f0;
   @media (max-width: 600px) {
     order: 2;
   }
 `;
 const BillListContainer = styled.ul`
-  list-style-type: none;
   display: flex;
   flex-wrap: wrap;
-  margin: 0px;
+  list-style-type: none;
   padding: 0px;
+  margin: 0px;
 `;
 const Heading = styled.h1`
-  font-size: 20px;
   text-align: center;
+  font-size: 20px;
 `;
 
 export { MainContainer, MainDiv, Heading, BillListContainer };

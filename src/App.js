@@ -1,18 +1,17 @@
 import "./styles.css";
-// import LoginForm from "./components/LoginRoute/LoginForm";
 import HomeRoute from "./components/HomeRoute/HomeRoute";
 import DetailsRoute from "./components/DetailsRoute/DetailsRoute";
-
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import PaymentRoute from "./components/PaymentRoute/PaymentRoute/PaymentRoute";
 import FormikPra from "./components/FormikPra/FormikPra";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
 const App = () => (
   <Router>
     <Switch>
       <Route exact path="/" component={HomeRoute} />
-      <Route exact path="/practice" component={FormikPra} />
       <Route exact path="/details/:id" component={DetailsRoute} />
       <Route exact path="/payment/:id" component={PaymentRoute} />
+      <Route exact path="/practice" component={FormikPra} />
     </Switch>
   </Router>
 );

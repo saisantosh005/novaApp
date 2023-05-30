@@ -1,19 +1,19 @@
 import styled from "styled-components";
 
 const MainContainer = styled.div`
-  background: #f0f0f0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: #f0f0f0;
   min-height: 100vh;
 `;
 const PaymentContainer = styled.div`
   background: white;
-  border-radius: 10px;
-  padding: 20px;
   min-width: 300px;
   min-height: 300px;
+  border-radius: 10px;
+  padding: 20px;
 `;
 const Heading = styled.h1`
   text-align: center;
@@ -49,11 +49,11 @@ const Input = styled.input`
 `;
 const Button = styled.button`
   border-radius: 10px;
-  margin: 3px;
-  padding: 10px 20px;
   border: none;
   background: blue;
   color: white;
+  padding: 10px 20px;
+  margin: 3px;
 `;
 const ErrorText = styled.p`
   color: red;

@@ -1,8 +1,8 @@
 import styled from "styled-components";
 const MainContainer = styled.form`
   background: white;
-  max-height: 500px;
   border-radius: 10px;
+  max-height: 500px;
   padding: 15px;
 `;
 const Heading = styled.h1`
@@ -15,10 +15,10 @@ const InputContainer = styled.div`
   /* max-width: 500px; */
 `;
 const Select = styled.select`
-  padding: 10px;
-  border-radius: 10px;
-  margin: 5px;
   font-size: 20px;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 5px;
 `;
 const Label = styled.label`
   font-size: 20px;
@@ -27,11 +27,11 @@ const Label = styled.label`
   }
 `;
 const Input = styled.input`
-  padding: 10px;
-  border-radius: 10px;
-  margin: 5px;
   font-size: 20px;
   border: 1px solid grey;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 5px;
   @media (max-width: 500px) {
     font-size: 12px;
     padding: 5px;
@@ -48,11 +48,11 @@ const ButtonContainer = styled.div`
 const Button = styled.button`
   flex-grow: 1;
   font-size: 18px;
+  color: white;
   border-radius: 10px;
   background: #3333ff;
-  color: white;
-  border: none;
   padding: 15px 12px;
+  border: none;
 `;
 const ErrorText = styled.p`
   color: red;

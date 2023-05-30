@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
 import AddBill from "./AddBill/AddBill";
 import BillCard from "./BillCard/BillCard";
+import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 import {
@@ -9,6 +9,7 @@ import {
   MainContainer,
   MainDiv
 } from "./styledComponent";
+import NewAddBill from "./AddBill/NewAddBill";
 const billsList = [
   {
     id: 123487,
@@ -74,6 +75,7 @@ const HomeRoute = () => {
           )}
         </BillListContainer>
       </MainDiv>
+      <NewAddBill />
       <AddBill addbill={insertNewBill} />
     </MainContainer>
   );
