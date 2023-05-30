@@ -47,6 +47,7 @@ const HomeRoute = () => {
   );
 
   const insertNewBill = (value) => {
+    console.log("He");
     setBillList([...billListValues, value]);
   };
   const onDeleteBill = (id) => {
@@ -75,7 +76,7 @@ const HomeRoute = () => {
           )}
         </BillListContainer>
       </MainDiv>
-      <NewAddBill />
+      <NewAddBill addbill={insertNewBill} />
       <AddBill addbill={insertNewBill} />
     </MainContainer>
   );

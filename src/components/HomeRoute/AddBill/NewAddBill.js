@@ -1,13 +1,28 @@
 import { Field, useFormik, Form, Formik, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import TextError from "./TextError";
+import { v4 as uuidv4 } from "uuid";
+import {
+  Button,
+  ButtonContainer,
+  FormPart,
+  Heading,
+  InputContainer,
+  InputField,
+  Label,
+  MainContainer
+} from "./styledComponent";
+
 const initialValues = {
   referenceNumber: "",
   phoneNumber: "hkasdf",
   amount: "",
-  email: ""
+  email: "",
+  category: [],
+  frequency: []
 };
-const onSubmit = (values) => {
-  console.log(values);
+const onSubmit = (values, props) => {
+  console.log(values, props);
 };
 const validationSchema = Yup.object({
   referenceNumber: Yup.string().required("Required"),
@@ -15,61 +30,72 @@ const validationSchema = Yup.object({
   email: Yup.string().email("Invalid Email Format").required("Required"),
   amount: Yup.string().required("Required")
 });
-const NewAddBill = () => {
-  const p = 0;
-
+const NewAddBill = (props) => {
   return (
-    <Formik
-      initialValues={initialValues}
-      onSubmit={onSubmit}
-      validationSchema={validationSchema}
-    >
-      <Form onSubmit={formik.handleSubmit}>
-        <div>
-          <label htmlFor="referenceNumber">Reference Number</label>
-          <Field
-            name="referenceNumber"
-            id="referenceNumber"
-            type="text"
-            {...formik.getFieldProps("referenceNumber")}
-          />
-          {formik.errors.referenceNumber && (
-            <p>{formik.errors.referenceNumber}</p>
-          )}
-        </div>
-        <div>
-          <label htmlFor="phoneNumber">Phone Number</label>
-          <Field
-            name="phoneNumber"
-            id="phoneNumber"
-            type="phonenumber"
-            {...formik.getFieldProps("phoneNumber")}
-          />
-          {formik.errors.phoneNumber && <p>{formik.errors.phoneNumber}</p>}
-        </div>
-        <div>
-          <label htmlFor="amount">Amount</label>
-          <Field
-            name="amount"
-            id="amount"
-            type="text"
-            {...formik.getFieldProps("amount")}
-          />
-          {formik.errors.amount && <p>{formik.errors.amount}</p>}
-        </div>
-        <div>
-          <label htmlFor="email">Email</label>
-          <Field
-            name="email"
-            id="email"
-            type="email"
-            {...formik.getFieldProps("email")}
-          />
-          {formik.errors.email && <p>{formik.errors.email}</p>}
-        </div>
-        <button type="submit">Submit</button>
-      </Form>
-    </Formik>
+    <MainContainer>
+      <Heading>New Bill</Heading>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={(values, onSubmitProps) => {
+          props.addbill({ ...values, id: uuidv4() });
+          onSubmitProps.resetForm();
+        }}
+        validationSchema={validationSchema}
+      >
+        {(formik) => {
+          return (
+            <Form>
+              <InputContainer>
+                <Label htmlFor="referenceNumber">Reference Number</Label>
+                <InputField
+                  name="referenceNumber"
+                  id="referenceNumber"
+                  type="text"
+                  placeholder="Reference Number"
+                />
+                <ErrorMessage name="referenceNumber" component={TextError} />
+              </InputContainer>
+              <InputContainer>
+                <Label htmlFor="phoneNumber">Phone Number</Label>
+                <InputField
+                  name="phoneNumber"
+                  id="phoneNumber"
+                  type="phonenumber"
+                  placeholder="Phone Number"
+                />
+                <ErrorMessage name="phoneNumber" component={TextError} />
+              </InputContainer>
+              <InputContainer>
+                <Label htmlFor="amount">Amount</Label>
+                <InputField
+                  name="amount"
+                  id="amount"
+                  type="text"
+                  placeholder="Amount"
+                />
+                <ErrorMessage name="amount" component={TextError} />
+              </InputContainer>
+              <InputContainer>
+                <Label htmlFor="email">Email</Label>
+                <InputField
+                  name="email"
+                  id="email"
+                  type="email"
+                  placeholder="Email"
+                />
+                <ErrorMessage name="email" component={TextError} />
+              </InputContainer>
+
+              <ButtonContainer>
+                <Button type="submit" disabled={!formik.isValid}>
+                  Submit
+                </Button>
+              </ButtonContainer>
+            </Form>
+          );
+        }}
+      </Formik>
+    </MainContainer>
   );
 };
 export default NewAddBill;
