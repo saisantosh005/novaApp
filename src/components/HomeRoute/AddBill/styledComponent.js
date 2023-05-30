@@ -73,12 +73,19 @@ const InputField = styled(Field)`
   border-radius: 10px;
   padding: 10px;
   margin-bottom: 5px;
+  outline: none;
   @media (max-width: 500px) {
     font-size: 12px;
     padding: 5px;
   }
 `;
-
+const SelectField = styled(Field)`
+  font-size: 20px;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 5px;
+  outline: none;
+`;
 export {
   MainContainer,
   Heading,
@@ -90,5 +97,6 @@ export {
   Button,
   ErrorText,
   FormPart,
-  InputField
+  InputField,
+  SelectField
 };

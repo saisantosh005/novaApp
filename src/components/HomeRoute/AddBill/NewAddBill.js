@@ -10,27 +10,35 @@ import {
   InputContainer,
   InputField,
   Label,
-  MainContainer
+  MainContainer,
+  Select,
+  SelectField
 } from "./styledComponent";
+import FormControl from "../../CommoneComponents/FormComponents/FormikControl";
 
-const initialValues = {
-  referenceNumber: "",
-  phoneNumber: "hkasdf",
-  amount: "",
-  email: "",
-  category: [],
-  frequency: []
-};
-const onSubmit = (values, props) => {
-  console.log(values, props);
-};
-const validationSchema = Yup.object({
-  referenceNumber: Yup.string().required("Required"),
-  phoneNumber: Yup.string().required("Required"),
-  email: Yup.string().email("Invalid Email Format").required("Required"),
-  amount: Yup.string().required("Required")
-});
+const dropDownOptions = [
+  { key: "Select an Option", value: "" },
+  { key: "Electricity", value: "Electricity" },
+  { key: "Recharge", value: "Recharge" },
+  { key: "Credit Card", value: "credit Card" }
+];
+
 const NewAddBill = (props) => {
+  const initialValues = {
+    referenceNumber: "",
+    phoneNumber: "",
+    amount: "",
+    email: "",
+    frequency: [],
+    category: ""
+  };
+
+  const validationSchema = Yup.object({
+    referenceNumber: Yup.string().required("Required"),
+    phoneNumber: Yup.string().required("Required"),
+    email: Yup.string().email("Invalid Email Format").required("Required"),
+    amount: Yup.string().required("Required")
+  });
   return (
     <MainContainer>
       <Heading>New Bill</Heading>
@@ -45,6 +53,16 @@ const NewAddBill = (props) => {
         {(formik) => {
           return (
             <Form>
+              <InputContainer>
+                <Label htmlFor="category">Category</Label>
+                <SelectField as="select" name="category" id="category">
+                  {dropDownOptions.map((option) => (
+                    <option key={option.value} value={option.value}>
+                      {option.key}
+                    </option>
+                  ))}
+                </SelectField>
+              </InputContainer>
               <InputContainer>
                 <Label htmlFor="referenceNumber">Reference Number</Label>
                 <InputField

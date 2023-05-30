@@ -1,8 +1,10 @@
+import Input from "./Input";
+
 const FormControl = (props) => {
-  const { control } = props;
+  const { control, rest } = props;
   switch (control) {
     case "input":
-      return <></>;
+      return <Input {...rest} />;
     case "checkbox":
       return <></>;
     case "select":

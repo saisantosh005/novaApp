@@ -1,4 +1,4 @@
-import { ErrorText } from "./styledComponent";
+import { ErrorText } from "./styledComponents";
 function TextError(props) {
   return <ErrorText>{props.children}</ErrorText>;
 }
