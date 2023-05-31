@@ -12,7 +12,7 @@ import {
   Heading,
   ErrorText
 } from "./styledComponents";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { useState } from "react";
 
 const PaymentRoute = (props) => {
@@ -43,6 +43,18 @@ const PaymentRoute = (props) => {
     const { accountNumber, cvv } = accountDetails;
     if (accountNumber !== "" || cvv !== "") {
       setErrMsgStatus(!showErrorMsg);
+      // const billListData = JSON.parse(localStorage.getItem("billList"));
+      // const paidBillLIst = localStorage.getItem("paidBillList");
+      // const paidItem = billListData.filter((item) => item.id != id)[0];
+      // localStorage.setItem(
+      //   "billList",
+      //   JSON.stringify(billListData.filter((item) => item.id != id))
+      // );
+      // localStorage.setItem(
+      //   "paidBillList",
+      //   JSON.stringify([...paidBillLIst, paidItem])
+      // );
+
       alert("You payment is success");
       history.replace(`/details/${id}`);
     } else {
@@ -78,10 +90,6 @@ const PaymentRoute = (props) => {
         <PaymentDetailsSection>
           <InputContainer>
             <Label>AccountNumber</Label>
-            <Input type="text" />
-          </InputContainer>
-          <InputContainer>
-            <Label>CVV</Label>
             <Input
               type="text"
               value={accountDetails.accountNumber}
@@ -89,7 +97,7 @@ const PaymentRoute = (props) => {
             />
           </InputContainer>
           <InputContainer>
-            <Label></Label>
+            <Label>CVV</Label>
             <Input
               type="text"
               value={accountDetails.cvv}

@@ -42,12 +42,12 @@ const billsList = [
 
 const HomeRoute = () => {
   const localBillList = JSON.parse(localStorage.getItem("billList"));
+  const localBillListPaid = JSON.parse(localStorage.getItem("paidBillList"));
   const [billListValues, setBillList] = useState(
     localBillList ? localBillList : billsList
   );
 
   const insertNewBill = (value) => {
-    console.log(value);
     setBillList([...billListValues, value]);
   };
   const onDeleteBill = (id) => {
@@ -56,7 +56,7 @@ const HomeRoute = () => {
   };
   useEffect(() => {
     localStorage.setItem("billList", JSON.stringify(billListValues));
-  });
+  }, [billListValues]);
 
   return (
     <MainContainer>
