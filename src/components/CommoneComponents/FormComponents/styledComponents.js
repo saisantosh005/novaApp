@@ -1,4 +1,4 @@
-import { Field, Formik } from "formik";
+import { Field } from "formik";
 import styled from "styled-components";
 
 const MainContainer = styled.div`
@@ -19,6 +19,13 @@ const Select = styled.select`
   border-radius: 10px;
   padding: 10px;
   margin: 5px;
+`;
+const SelectField = styled(Field)`
+  font-size: 20px;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 5px;
+  outline: none;
 `;
 const Label = styled.label`
   font-size: 20px;
@@ -90,5 +97,6 @@ export {
   Button,
   ErrorText,
   FormPart,
-  InputField
+  InputField,
+  SelectField
 };

@@ -1,11 +1,13 @@
-import { Field, Formik } from "formik";
+import { Field } from "formik";
 import styled from "styled-components";
 
 const MainContainer = styled.div`
   background: white;
   border-radius: 10px;
-  max-height: 500px;
+  max-height: 600px;
   padding: 15px;
+  overflow-wrap: scroll;
+  min-width: 400px;
 `;
 const Heading = styled.h1`
   text-align: center;

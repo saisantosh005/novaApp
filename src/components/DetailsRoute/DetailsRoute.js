@@ -13,6 +13,8 @@ import {
 } from "./styledComponents";
 
 const DetailsRoute = (props) => {
+  const { edit, setEditStatus } = useState("");
+  const { FreshDetails, setDetails } = useState("");
   const { match } = props;
   const { params } = match;
   const { id } = params;

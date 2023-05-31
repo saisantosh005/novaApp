@@ -6,7 +6,7 @@ const MainContainer = styled.div`
   background: #f0f0f0;
   min-height: 100vh;
   padding: 10px;
-  @media screen and (min-width: 600px) and (max-width: 800px) {
+  @media (min-width: 600px) {
     flex-direction: row;
   }
 `;
