@@ -24,7 +24,12 @@ const App = () => {
     const newBillList = billListValues.filter((bill) => bill.id !== id);
     setBillList(newBillList);
   };
-
+  const onUpdateBill = (updateBill) => {
+    const billList = billListValues.map((item) =>
+      item.id == updateBill.id ? updateBill : item
+    );
+    setBillList(billList);
+  };
   useEffect(() => {
     localStorage.setItem("billList", JSON.stringify(billListValues));
   }, [billListValues]);
@@ -36,7 +41,8 @@ const App = () => {
           value={{
             billListValues: billListValues,
             insertNewBill,
-            onDeleteBill
+            onDeleteBill,
+            onUpdateBill
           }}
         >
           <Route exact path="/" component={HomeRoute} />

@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link, withRouter } from "react-router-dom";
+import { BillContext } from "../../App";
 import {
   DetailsMainContainer,
   DetailsCardContainer,
@@ -14,6 +15,7 @@ import {
 } from "./styledComponents";
 
 const DetailsRoute = (props) => {
+  const contextBill = useContext(BillContext);
   const [edit, setEditStatus] = useState(false);
   const { match } = props;
   const { params } = match;
@@ -40,12 +42,25 @@ const DetailsRoute = (props) => {
   useEffect(() => {
     // console.log(details, category, amount, email, "asdf");
   });
-  // const onChangeReferenceNumber
-  // const onChangeFrequency
-  // const onChangePhoneNumber
-  // const onChangeEmail
-  // const onChangeAmount
-
+  const onChangeReferenceNumber = (e) => {
+    setDetails({ ...freshDetails, referenceNumber: e.target.value });
+  };
+  const onChangeFrequency = (e) => {
+    setDetails({ ...freshDetails, frequency: e.target.value });
+  };
+  const onChangePhoneNumber = (e) => {
+    setDetails({ ...freshDetails, phoneNumber: e.target.value });
+  };
+  const onChangeEmail = (e) => {
+    setDetails({ ...freshDetails, email: e.target.value });
+  };
+  const onChangeAmount = (e) => {
+    setDetails({ ...freshDetails, amount: e.target.value });
+  };
+  const onUpdateClick = () => {
+    setEditStatus(!edit);
+    contextBill.onUpdateBill(freshDetails);
+  };
   return (
     <DetailsMainContainer>
       <DetailsCardContainer>
@@ -53,46 +68,59 @@ const DetailsRoute = (props) => {
         <Details>
           <Content>
             Category:
-            {edit ? <Input /> : <SpecialText>{category}</SpecialText>}
+            {edit ? (
+              <Input />
+            ) : (
+              <SpecialText>{freshDetails.category}</SpecialText>
+            )}
           </Content>
           <Content>
             Reference Number:
             {edit ? (
-              <Input value={freshDetails.referenceNumber} />
+              <Input
+                onChange={onChangeReferenceNumber}
+                value={freshDetails.referenceNumber}
+              />
             ) : (
-              <SpecialText>{referenceNumber}</SpecialText>
+              <SpecialText>{freshDetails.referenceNumber}</SpecialText>
             )}
           </Content>
           <Content>
             Frequency:
             {edit ? (
-              <Input value={freshDetails.frequency} />
+              <Input
+                onChange={onChangeFrequency}
+                value={freshDetails.frequency}
+              />
             ) : (
-              <SpecialText>{frequency}</SpecialText>
+              <SpecialText>{freshDetails.frequency}</SpecialText>
             )}
           </Content>
           <Content>
             Phone number:
             {edit ? (
-              <Input value={freshDetails.phoneNumber} />
+              <Input
+                onChange={onChangePhoneNumber}
+                value={freshDetails.phoneNumber}
+              />
             ) : (
-              <SpecialText>{phoneNumber}</SpecialText>
+              <SpecialText>{freshDetails.phoneNumber}</SpecialText>
             )}
           </Content>
           <Content>
             Email:
             {edit ? (
-              <Input value={freshDetails.email} />
+              <Input onChange={onChangeEmail} value={freshDetails.email} />
             ) : (
-              <SpecialText>{email}</SpecialText>
+              <SpecialText>{freshDetails.email}</SpecialText>
             )}
           </Content>
           <Content>
             Amout:
             {edit ? (
-              <Input value={freshDetails.amount} />
+              <Input onChange={onChangeAmount} value={freshDetails.amount} />
             ) : (
-              <SpecialText>{amount}</SpecialText>
+              <SpecialText>{freshDetails.amount}</SpecialText>
             )}
           </Content>
         </Details>
@@ -101,7 +129,11 @@ const DetailsRoute = (props) => {
             <Button>Pay</Button>
           </Link>
 
-          <Button onClick={onEditClick}>{edit ? "Update" : "Edit"}</Button>
+          {edit ? (
+            <Button onClick={onUpdateClick}>Update</Button>
+          ) : (
+            <Button onClick={onEditClick}>Edit</Button>
+          )}
         </ButtonContainer>
         <button onClick={onGoback}>back</button>
       </DetailsCardContainer>

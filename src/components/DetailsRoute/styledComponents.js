@@ -9,10 +9,6 @@ const DetailsMainContainer = styled.div`
   min-height: 100vh;
 `;
 const DetailsCardContainer = styled.div`
-  /* display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center; */
   background: white;
   min-width: 300px;
   padding: 15px;
