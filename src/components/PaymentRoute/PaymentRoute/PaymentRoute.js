@@ -94,6 +94,7 @@ const PaymentRoute = (props) => {
               type="text"
               value={accountDetails.accountNumber}
               onChange={onChangeAccountNumber}
+              placeholder="Account Number"
             />
           </InputContainer>
           <InputContainer>
@@ -102,6 +103,7 @@ const PaymentRoute = (props) => {
               type="text"
               value={accountDetails.cvv}
               onChange={onChangeCvv}
+              placeholder="CVV"
             />
           </InputContainer>
           <Button onClick={onPaymentDone}>Pay</Button>

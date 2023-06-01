@@ -26,11 +26,14 @@ const SelectField = styled(Field)`
   padding: 10px;
   margin: 5px;
   outline: none;
+  @media (max-width: 500px) {
+    font-size: 14px;
+  }
 `;
 const Label = styled.label`
   font-size: 20px;
   @media (max-width: 500px) {
-    font-size: 12px;
+    font-size: 15px;
   }
 `;
 const Input = styled.input`
@@ -81,8 +84,9 @@ const InputField = styled(Field)`
   padding: 10px;
   margin-bottom: 5px;
   @media (max-width: 500px) {
-    font-size: 12px;
-    padding: 5px;
+    font-size: 14px;
+    /* padding: 5px; */
+    /* width: 100%; */
   }
 `;
 

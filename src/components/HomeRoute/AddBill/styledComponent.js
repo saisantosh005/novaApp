@@ -2,12 +2,16 @@ import { Field } from "formik";
 import styled from "styled-components";
 
 const MainContainer = styled.div`
+  display: flex;
+  flex-direction: column;
   background: white;
   border-radius: 10px;
   max-height: 600px;
   padding: 15px;
   overflow-wrap: scroll;
-  min-width: 400px;
+  @media (min-width: 600px) {
+    min-width: 350px;
+  }
 `;
 const Heading = styled.h1`
   text-align: center;

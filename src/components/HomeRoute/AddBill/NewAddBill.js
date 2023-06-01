@@ -44,7 +44,7 @@ const NewAddBill = (props) => {
       <Formik
         initialValues={initialValues}
         onSubmit={(values, onSubmitProps) => {
-          props.addbill({ ...values, id: uuidv4() });
+          props.addbill({ ...values, category: "Recharge", id: uuidv4() });
           onSubmitProps.resetForm();
         }}
         validationSchema={validationSchema}
