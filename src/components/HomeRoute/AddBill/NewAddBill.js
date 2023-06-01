@@ -9,8 +9,11 @@ import {
 } from "./styledComponent";
 import FormControl from "../../CommoneComponents/FormComponents/FormikControl";
 import { dropDownOptions, frequencyDropOptions } from "../../Contants";
+import { useContext } from "react";
+import { BillContext } from "../../../App";
 
 const NewAddBill = (props) => {
+  const contextData = useContext(BillContext);
   const initialValues = {
     referenceNumber: "",
     phoneNumber: "",
@@ -32,7 +35,11 @@ const NewAddBill = (props) => {
       <Formik
         initialValues={initialValues}
         onSubmit={(values, onSubmitProps) => {
-          props.addbill({ ...values, category: "Recharge", id: uuidv4() });
+          contextData.insertNewBill({
+            ...values,
+            category: "Recharge",
+            id: uuidv4()
+          });
           onSubmitProps.resetForm();
         }}
         validationSchema={validationSchema}

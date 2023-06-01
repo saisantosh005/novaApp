@@ -13,11 +13,14 @@ import {
   ErrorText
 } from "./styledComponents";
 import { withRouter } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { BillContext } from "../../../App";
 
 const PaymentRoute = (props) => {
   const [accountDetails, setAccount] = useState({ accountNumber: "", cvv: "" });
   const [showErrorMsg, setErrMsgStatus] = useState(false);
+  const dataContext = useContext(BillContext);
+
   const { match } = props;
   const { params } = match;
   const { id } = params;
@@ -53,6 +56,7 @@ const PaymentRoute = (props) => {
         "billList",
         JSON.stringify(billListData.filter((item) => item.id != id))
       );
+      dataContext.onDeleteBill(id);
       // localStorage.setItem(
       //   "paidBillList",
       //   JSON.stringify([...paidBillLIst, paidItem])
