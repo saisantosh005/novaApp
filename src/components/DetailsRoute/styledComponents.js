@@ -58,6 +58,18 @@ const SpecialText = styled.p`
   font-weight: bold;
   margin-left: 10px;
 `;
+const Input = styled.input`
+  font-size: 20px;
+  border: 1px solid grey;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 5px;
+  @media (max-width: 500px) {
+    font-size: 12px;
+    padding: 5px;
+  }
+  /* flex-grow: 1; */
+`;
 export {
   DetailsMainContainer,
   DetailsCardContainer,
@@ -67,5 +79,6 @@ export {
   Details,
   ButtonContainer,
   SpecialText,
-  Button
+  Button,
+  Input
 };

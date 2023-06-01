@@ -9,17 +9,19 @@ import {
   Details,
   ButtonContainer,
   Button,
-  SpecialText
+  SpecialText,
+  Input
 } from "./styledComponents";
 
 const DetailsRoute = (props) => {
-  const { edit, setEditStatus } = useState("");
-  const { FreshDetails, setDetails } = useState("");
+  const [edit, setEditStatus] = useState(false);
   const { match } = props;
   const { params } = match;
   const { id } = params;
   const storedDetails = JSON.parse(localStorage.getItem("billList"));
   const details = storedDetails.filter((detail) => detail.id == id);
+  const [freshDetails, setDetails] = useState(details[0]);
+
   const {
     category,
     referenceNumber,
@@ -32,34 +34,66 @@ const DetailsRoute = (props) => {
     const { history } = props;
     history.goBack();
   };
+  const onEditClick = () => {
+    setEditStatus(!edit);
+  };
   useEffect(() => {
     // console.log(details, category, amount, email, "asdf");
   });
+  // const onChangeReferenceNumber
+  // const onChangeFrequency
+  // const onChangePhoneNumber
+  // const onChangeEmail
+  // const onChangeAmount
+
   return (
     <DetailsMainContainer>
       <DetailsCardContainer>
         <Heading>Bill Details</Heading>
         <Details>
           <Content>
-            Category:<SpecialText>{category}</SpecialText>
+            Category:
+            {edit ? <Input /> : <SpecialText>{category}</SpecialText>}
           </Content>
           <Content>
-            Reference Number:<SpecialText>{referenceNumber}</SpecialText>
+            Reference Number:
+            {edit ? (
+              <Input value={freshDetails.referenceNumber} />
+            ) : (
+              <SpecialText>{referenceNumber}</SpecialText>
+            )}
           </Content>
           <Content>
             Frequency:
-            <SpecialText>{frequency}</SpecialText>
+            {edit ? (
+              <Input value={freshDetails.frequency} />
+            ) : (
+              <SpecialText>{frequency}</SpecialText>
+            )}
           </Content>
           <Content>
             Phone number:
-            <SpecialText>{phoneNumber}</SpecialText>
+            {edit ? (
+              <Input value={freshDetails.phoneNumber} />
+            ) : (
+              <SpecialText>{phoneNumber}</SpecialText>
+            )}
           </Content>
           <Content>
             Email:
-            <SpecialText>{email}</SpecialText>
+            {edit ? (
+              <Input value={freshDetails.email} />
+            ) : (
+              <SpecialText>{email}</SpecialText>
+            )}
           </Content>
           <Content>
-            Amout:<SpecialText>{amount}</SpecialText>
+            Amout:
+            {edit ? (
+              <Input value={freshDetails.amount} />
+            ) : (
+              <SpecialText>{amount}</SpecialText>
+            )}
           </Content>
         </Details>
         <ButtonContainer>
@@ -67,7 +101,7 @@ const DetailsRoute = (props) => {
             <Button>Pay</Button>
           </Link>
 
-          <Button>Edit</Button>
+          <Button onClick={onEditClick}>{edit ? "Update" : "Edit"}</Button>
         </ButtonContainer>
         <button onClick={onGoback}>back</button>
       </DetailsCardContainer>
