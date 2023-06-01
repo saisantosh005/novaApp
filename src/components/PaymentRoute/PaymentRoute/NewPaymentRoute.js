@@ -15,7 +15,7 @@ import {
 import { withRouter } from "react-router-dom";
 import { useState } from "react";
 
-const PaymentRoute = (props) => {
+const NewPaymentRoute = (props) => {
   const [accountDetails, setAccount] = useState({ accountNumber: "", cvv: "" });
   const [showErrorMsg, setErrMsgStatus] = useState(false);
   const { match } = props;
@@ -44,19 +44,23 @@ const PaymentRoute = (props) => {
     if (accountNumber !== "" || cvv !== "") {
       setErrMsgStatus(!showErrorMsg);
       const billListData = JSON.parse(localStorage.getItem("billList"));
-      const paidBillLIst =
-        localStorage.getItem("paidBillList") == null
-          ? []
-          : JSON.stringify(localStorage.getItem("paidBillList"));
+      const paidBillList = localStorage.getItem("paidBillList");
+      console.log(paidBillList == null, "paidBillLIst");
+      // localStorage.getItem("paidBillList") == null
+      //   ? []
+      //   : JSON.stringify(localStorage.getItem("paidBillList"));
       const paidItem = billListData.filter((item) => item.id != id)[0];
-      localStorage.setItem(
-        "billList",
-        JSON.stringify(billListData.filter((item) => item.id != id))
-      );
       // localStorage.setItem(
-      //   "paidBillList",
-      //   JSON.stringify([...paidBillLIst, paidItem])
+      //   "billList",
+      //   JSON.stringify(billListData.filter((item) => item.id != id))
       // );
+      if (paidBillList != null && paidBillList.length > 0) {
+        const newPaidBillList = [...paidBillList, paidItem];
+        console.log(newPaidBillList, "asdjf");
+      } else {
+        localStorage.setItem("paidBillList", JSON.stringify([paidItem]));
+        console.log(localStorage.getItem("paidBillList"), "hel");
+      }
 
       alert("You payment is success");
       history.replace(`/`);
@@ -119,4 +123,4 @@ const PaymentRoute = (props) => {
     </MainContainer>
   );
 };
-export default withRouter(PaymentRoute);
+export default withRouter(NewPaymentRoute);

@@ -8,20 +8,8 @@ import {
   MainContainer
 } from "./styledComponent";
 import FormControl from "../../CommoneComponents/FormComponents/FormikControl";
+import { dropDownOptions, frequencyDropOptions } from "../../Contants";
 
-const dropDownOptions = [
-  { key: "Select an Option", value: "" },
-  { key: "Electricity", value: "Electricity" },
-  { key: "Recharge", value: "Recharge" },
-  { key: "Credit Card", value: "credit Card" }
-];
-
-const frequencyDropOptions = [
-  { key: "Select an Option", value: "" },
-  { key: "Monthly", value: "monthly" },
-  { key: "Quarterly", value: "quarterly" },
-  { key: "Half Yearly", value: "halfYearly" }
-];
 const NewAddBill = (props) => {
   const initialValues = {
     referenceNumber: "",
@@ -113,58 +101,3 @@ const NewAddBill = (props) => {
   );
 };
 export default NewAddBill;
-{
-  /* <InputContainer>
-                <Label htmlFor="referenceNumber">Reference Number</Label>
-                <InputField
-                  name="referenceNumber"
-                  id="referenceNumber"
-                  type="text"
-                  placeholder="Reference Number"
-                />
-                <ErrorMessage name="referenceNumber" component={TextError} />
-              </InputContainer> */
-}
-{
-  /* <InputContainer>
-                <Label htmlFor="category">Category</Label>
-                <SelectField as="select" name="category" id="category">
-                  {dropDownOptions.map((option) => (
-                    <option key={option.value} value={option.value}>
-                      {option.key}
-                    </option>
-                  ))}
-                </SelectField>
-              </InputContainer>
-              <InputContainer>
-                <Label htmlFor="phoneNumber">Phone Number</Label>
-                <InputField
-                  name="phoneNumber"
-                  id="phoneNumber"
-                  type="phonenumber"
-                  placeholder="Phone Number"
-                />
-                <ErrorMessage name="phoneNumber" component={TextError} />
-              </InputContainer>
-              <InputContainer>
-                <Label htmlFor="amount">Amount</Label>
-                <InputField
-                  name="amount"
-                  id="amount"
-                  type="text"
-                  placeholder="Amount"
-                />
-                <ErrorMessage name="amount" component={TextError} />
-              </InputContainer>
-              <InputContainer>
-                <Label htmlFor="email">Email</Label>
-                <InputField
-                
-                  name="email"
-                  id="email"
-                  type="email"
-                  placeholder="Email"
-                />
-                <ErrorMessage name="email" component={TextError} />
-              </InputContainer> */
-}
