@@ -57,11 +57,6 @@ const PaymentRoute = (props) => {
         JSON.stringify(billListData.filter((item) => item.id != id))
       );
       dataContext.onPaymentDone(id);
-      // localStorage.setItem(
-      //   "paidBillList",
-      //   JSON.stringify([...paidBillLIst, paidItem])
-      // );
-
       alert("You payment is success");
       history.replace(`/`);
     } else {

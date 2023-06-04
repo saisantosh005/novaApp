@@ -39,7 +39,7 @@ const NewAddBill = (props) => {
             ...values,
             category: "Recharge",
             paymentStatus: false,
-            id: uuidv4()
+            id: uuidv4().toString()
           });
           onSubmitProps.resetForm();
         }}

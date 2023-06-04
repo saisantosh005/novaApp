@@ -13,7 +13,7 @@ export const frequencyDropOptions = [
 ];
 export const billsList = [
   {
-    id: 123487,
+    id: "123487",
     referenceNumber: 143273,
     category: "Electricity",
     amount: 200,
@@ -23,7 +23,7 @@ export const billsList = [
     paymentStatus: false
   },
   {
-    id: 2345987,
+    id: "2345987",
     referenceNumber: 143273,
     category: "Mobile recharge",
     amount: 200,
@@ -33,7 +33,7 @@ export const billsList = [
     paymentStatus: true
   },
   {
-    id: 3234987,
+    id: "3234987",
     referenceNumber: 143273,
     category: "Subscription",
     amount: 200,

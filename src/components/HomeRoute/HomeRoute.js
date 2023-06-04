@@ -58,9 +58,7 @@ const HomeRoute = () => {
           </BillListContainer>
         </BillContainer>
       </MainDiv>
-
       <NewAddBill addbill={contextData.insertNewBill} />
-      {/* <AddBill addbill={insertNewBill} /> */}
     </MainContainer>
   );
 };

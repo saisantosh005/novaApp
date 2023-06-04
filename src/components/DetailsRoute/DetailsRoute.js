@@ -20,10 +20,8 @@ const DetailsRoute = (props) => {
   const { match } = props;
   const { params } = match;
   const { id } = params;
-  const storedDetails = JSON.parse(localStorage.getItem("billList"));
-  const details = storedDetails.filter((detail) => detail.id == id);
+  const details = contextBill.billListValues.filter((bill) => bill.id === id);
   const [freshDetails, setDetails] = useState(details[0]);
-
   const {
     category,
     referenceNumber,
@@ -31,7 +29,7 @@ const DetailsRoute = (props) => {
     email,
     frequency,
     phoneNumber
-  } = details[0];
+  } = freshDetails;
   const onGoback = () => {
     const { history } = props;
     history.goBack();
@@ -39,9 +37,6 @@ const DetailsRoute = (props) => {
   const onEditClick = () => {
     setEditStatus(!edit);
   };
-  useEffect(() => {
-    // console.log(details, category, amount, email, "asdf");
-  });
   const onChangeReferenceNumber = (e) => {
     setDetails({ ...freshDetails, referenceNumber: e.target.value });
   };
@@ -68,43 +63,33 @@ const DetailsRoute = (props) => {
         <Details>
           <Content>
             Category:
-            {edit ? (
-              <Input />
-            ) : (
-              <SpecialText>{freshDetails.category}</SpecialText>
-            )}
+            {edit ? <Input /> : <SpecialText>{category}</SpecialText>}
           </Content>
           <Content>
             Reference Number:
             {edit ? (
               <Input
                 onChange={onChangeReferenceNumber}
-                value={freshDetails.referenceNumber}
+                value={referenceNumber}
               />
             ) : (
-              <SpecialText>{freshDetails.referenceNumber}</SpecialText>
+              <SpecialText>{referenceNumber}</SpecialText>
             )}
           </Content>
           <Content>
             Frequency:
             {edit ? (
-              <Input
-                onChange={onChangeFrequency}
-                value={freshDetails.frequency}
-              />
+              <Input onChange={onChangeFrequency} value={frequency} />
             ) : (
-              <SpecialText>{freshDetails.frequency}</SpecialText>
+              <SpecialText>{frequency}</SpecialText>
             )}
           </Content>
           <Content>
             Phone number:
             {edit ? (
-              <Input
-                onChange={onChangePhoneNumber}
-                value={freshDetails.phoneNumber}
-              />
+              <Input onChange={onChangePhoneNumber} value={phoneNumber} />
             ) : (
-              <SpecialText>{freshDetails.phoneNumber}</SpecialText>
+              <SpecialText>{phoneNumber}</SpecialText>
             )}
           </Content>
           <Content>
@@ -112,15 +97,15 @@ const DetailsRoute = (props) => {
             {edit ? (
               <Input onChange={onChangeEmail} value={freshDetails.email} />
             ) : (
-              <SpecialText>{freshDetails.email}</SpecialText>
+              <SpecialText>{email}</SpecialText>
             )}
           </Content>
           <Content>
             Amout:
             {edit ? (
-              <Input onChange={onChangeAmount} value={freshDetails.amount} />
+              <Input onChange={onChangeAmount} value={amount} />
             ) : (
-              <SpecialText>{freshDetails.amount}</SpecialText>
+              <SpecialText>{amount}</SpecialText>
             )}
           </Content>
         </Details>
