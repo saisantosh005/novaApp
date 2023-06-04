@@ -20,7 +20,7 @@ const BillCard = (props) => {
       <ReferenceNumber>Reference Number: {referenceNumber}</ReferenceNumber>
       <Amount>Rs {amount}</Amount>
       <LinkAndIconContainer>
-        <Link to={`/details/${id}`}>View</Link>
+        {props.viewRequired && <Link to={`/details/${id}`}>View</Link>}
         <FaTrash onClick={onClickDelete} />
       </LinkAndIconContainer>
       {/* <button >Delete</button> */}

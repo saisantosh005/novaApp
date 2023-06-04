@@ -32,6 +32,7 @@ const HomeRoute = () => {
                   key={uuidv4()}
                   details={item}
                   onDeleteBill={contextData.onDeleteBill}
+                  viewRequired={true}
                 />
               ))
             ) : (
@@ -48,6 +49,7 @@ const HomeRoute = () => {
                   key={uuidv4()}
                   details={item}
                   onDeleteBill={contextData.onDeleteBill}
+                  viewRequired={false}
                 />
               ))
             ) : (
