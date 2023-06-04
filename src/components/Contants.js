@@ -19,7 +19,8 @@ export const billsList = [
     amount: 200,
     frequency: 3,
     phoneNumber: 972374987,
-    email: ""
+    email: "",
+    paymentStatus: false
   },
   {
     id: 2345987,
@@ -28,7 +29,8 @@ export const billsList = [
     amount: 200,
     frequency: 3,
     phoneNumber: 972374987,
-    email: ""
+    email: "",
+    paymentStatus: true
   },
   {
     id: 3234987,
@@ -37,6 +39,7 @@ export const billsList = [
     amount: 200,
     frequency: 3,
     phoneNumber: 972374987,
-    email: ""
+    email: "",
+    paymentStatus: true
   }
 ];

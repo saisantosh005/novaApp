@@ -19,6 +19,7 @@ const MainDiv = styled.div`
     order: 2;
   }
 `;
+const BillContainer = styled.div``;
 const BillListContainer = styled.ul`
   display: flex;
   flex-wrap: wrap;
@@ -31,4 +32,4 @@ const Heading = styled.h1`
   font-size: 20px;
 `;
 
-export { MainContainer, MainDiv, Heading, BillListContainer };
+export { MainContainer, MainDiv, Heading, BillListContainer, BillContainer };

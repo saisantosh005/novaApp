@@ -56,7 +56,7 @@ const PaymentRoute = (props) => {
         "billList",
         JSON.stringify(billListData.filter((item) => item.id != id))
       );
-      dataContext.onDeleteBill(id);
+      dataContext.onPaymentDone(id);
       // localStorage.setItem(
       //   "paidBillList",
       //   JSON.stringify([...paidBillLIst, paidItem])

@@ -15,13 +15,21 @@ const App = () => {
   const [billListValues, setBillList] = useState(
     localBillList ? localBillList : billsList
   );
-
   const insertNewBill = (value) => {
     setBillList([...billListValues, value]);
   };
-
+  // localStorage.removeItem("billList");
   const onDeleteBill = (id) => {
     const newBillList = billListValues.filter((bill) => bill.id !== id);
+    setBillList(newBillList);
+  };
+  const onPaymentDone = (id) => {
+    const newBillList = billListValues.map((bill) => {
+      if (bill.id == id) {
+        return { ...bill, paymentStatus: true };
+      }
+      return bill;
+    });
     setBillList(newBillList);
   };
   const onUpdateBill = (updateBill) => {
@@ -42,7 +50,8 @@ const App = () => {
             billListValues: billListValues,
             insertNewBill,
             onDeleteBill,
-            onUpdateBill
+            onUpdateBill,
+            onPaymentDone
           }}
         >
           <Route exact path="/" component={HomeRoute} />

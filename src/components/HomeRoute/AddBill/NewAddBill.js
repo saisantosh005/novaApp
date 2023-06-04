@@ -38,6 +38,7 @@ const NewAddBill = (props) => {
           contextData.insertNewBill({
             ...values,
             category: "Recharge",
+            paymentStatus: false,
             id: uuidv4()
           });
           onSubmitProps.resetForm();
